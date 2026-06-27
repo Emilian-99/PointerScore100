@@ -1,0 +1,10 @@
+import "./styles/global.css";
+import { initNavigation } from "./components/navigation";
+import { initFaq } from "./components/faq";
+import { initReveal } from "./components/reveal";
+import { initLeadForm } from "./components/lead-form";
+
+initNavigation();
+initFaq();
+initReveal();
+initLeadForm();

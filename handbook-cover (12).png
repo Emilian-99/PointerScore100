@@ -1,0 +1,14 @@
+export function initNavigation() {
+  const header = document.querySelector<HTMLElement>("[data-header]");
+  const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+  const links = document.querySelectorAll<HTMLAnchorElement>(".nav-menu a");
+  const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 12);
+  const close = () => { document.body.classList.remove("nav-open"); toggle?.setAttribute("aria-expanded", "false"); };
+  toggle?.addEventListener("click", () => {
+    const open = document.body.classList.toggle("nav-open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+  links.forEach((link) => link.addEventListener("click", close));
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader();
+}

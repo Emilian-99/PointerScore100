@@ -1,0 +1,11 @@
+export function initLeadForm() {
+  const form = document.querySelector<HTMLFormElement>("[data-lead-form]");
+  const note = document.querySelector<HTMLElement>("[data-form-note]");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "").trim();
+    if (note) note.textContent = name ? "Danke, " + name + ". Deine Vormerkung wurde lokal erfasst." : "Danke. Deine Vormerkung wurde lokal erfasst.";
+    form.reset();
+  });
+}
